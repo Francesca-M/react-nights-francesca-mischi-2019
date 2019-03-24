@@ -44,7 +44,7 @@ class App extends Component {
 
     return (
       <div>
-        <h1>Hi guys, thanks for checking my homework! :)</h1>
+        <h1>New catalog</h1>
         {isLoading && '...'}
         {!isLoading && (
           <ul>
