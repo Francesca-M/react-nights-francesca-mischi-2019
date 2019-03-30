@@ -3,7 +3,7 @@ module.exports = {
     '@strv/eslint-config-react/v16',
     '@strv/eslint-config-react/optional',
     'prettier',
-    'prettier/react'
+    'prettier/react',
   ],
   root: true,
   env: {
@@ -24,5 +24,7 @@ module.exports = {
   rules: {
     'prefer-named-capture-group': 0,
     'react/no-did-mount-set-state': 1,
-  }
+    'react/prefer-stateless-function': 0,
+    'react/no-render-return-value': 1,
+  },
 }
