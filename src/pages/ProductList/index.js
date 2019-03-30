@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getProducts } from '../../api/get-product'
 
@@ -26,8 +27,10 @@ class ProductList extends Component {
           <ul>
             {data.map(item => (
               <li key={item.id}>
-                <img src={item.attributes.image_url} width="50" alt="" />
-                <h2>{item.attributes.name}</h2>
+                <Link to={`/${item.id}`}>
+                  <img src={item.attributes.image_url} width="50" alt="" />
+                  <h2>{item.attributes.name}</h2>
+                </Link>
               </li>
             ))}
           </ul>
