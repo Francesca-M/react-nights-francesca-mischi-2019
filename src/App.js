@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>New catalog</h1>
         <Switch>
           <Route path="/" exact component={ProductList} />
           <Route path="/about" exact component={About} />

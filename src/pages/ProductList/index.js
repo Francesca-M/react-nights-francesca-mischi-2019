@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
+import MainTitle from '../../components/MainTitle'
+
 import { getProducts } from '../../api/get-products'
 
 class ProductList extends Component {
@@ -22,6 +24,7 @@ class ProductList extends Component {
 
     return (
       <div>
+        <MainTitle textAlign="center">New catalog</MainTitle>
         {isLoading && '...'}
         {data && (
           <ul>

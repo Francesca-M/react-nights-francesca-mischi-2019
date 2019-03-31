@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import * as serviceWorker from './serviceWorker'
+import GlobalStyles from './GlobalStyles'
 import App from './App'
 
 const render = () =>
   ReactDOM.render(
     <Router>
+      <GlobalStyles />
       <App />
     </Router>,
     document.getElementById('root')
