@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getProducts } from '../../api/get-product'
+import { getProducts } from '../../api/get-products'
 
 class ProductList extends Component {
   state = {
