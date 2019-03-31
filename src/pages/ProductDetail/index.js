@@ -1,17 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import { getProductDetail } from '../../api/get-product-detail'
-
-// const ProductDetail = ({ match }) => {
-//   const productId = match.params.productId;
-//   const product = getProductDetail(productId);
-//   console.log(product); // questo non funziona perche' deve attendere la risposta. per farlo devi inserire un await come in productlist
-//   return (
-//     <div>
-//       <h1>Product id {match.params.productId}</h1>
-//     </div>
-//   )
-// }
 
 class ProductDetail extends Component {
   constructor(props, { match }) {
@@ -27,7 +17,7 @@ class ProductDetail extends Component {
     this.setState(prevState => ({
       currentProduct,
       ...prevState.currentProduct,
-      isLoading: false
+      isLoading: false,
     }))
   }
 
@@ -52,6 +42,14 @@ class ProductDetail extends Component {
       </div>
     )
   }
+}
+
+ProductDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      productId: PropTypes.string,
+    }),
+  }).isRequired,
 }
 
 export { ProductDetail }
