@@ -12,8 +12,7 @@ class ProductList extends Component {
   }
 
   async componentDidMount() {
-    const products = await getProducts()
-    console.log(products);
+    const products = await getProducts();
     this.setState({ products, isLoading: false })
   }
 
@@ -27,10 +26,7 @@ class ProductList extends Component {
       <div>
         <MainTitle textAlign="center">New catalog</MainTitle>
         {isLoading && '...'}
-        {data && (
-          <List products={data}>
-          </List>
-        )}
+        {data && <List products={data} />}
       </div>
     )
   }

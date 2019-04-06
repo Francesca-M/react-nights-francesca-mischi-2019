@@ -13,11 +13,12 @@ export const getProducts = async () => {
 
   let products = await res.json()
 
-  // if (products) {
-  //   products = products.data.map(product => ({
-  //     //*****TODO: filter and add price
-  //   }))
-  // }
+  if (products) {
+    products.data = (products.data).map((product, i) => {
+      product.attributes.price = products.included[i].attributes.formatted_amount;
+      return product;
+    })
+  }
 
   return products
 }

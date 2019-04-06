@@ -1,6 +1,6 @@
 import React from 'react'
-import { ProductsWrapper } from './styled';
-import Product from './Product';
+import { ProductsWrapper } from './styled'
+import Product from './Product'
 
 const List = ({ products }) => (
   <ProductsWrapper>
@@ -9,5 +9,7 @@ const List = ({ products }) => (
     ))}
   </ProductsWrapper>
 )
+
+//TODO: add props validation for products
 
 export default List

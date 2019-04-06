@@ -1,5 +1,3 @@
-// import config from '../config'
-
 import { getProducts } from './get-products'
 
 export const getProductDetail = async productId => {

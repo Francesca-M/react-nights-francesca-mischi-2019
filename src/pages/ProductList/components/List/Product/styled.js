@@ -29,7 +29,10 @@ export const Img = styled.img`
 `
 
 export const Price = styled.span`
-  color: pink;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: ${theme.color.black};
 `
 
 export const NameWrap = styled.div`
