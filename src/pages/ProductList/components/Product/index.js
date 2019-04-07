@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Wrapper, Link, ImgWrap, Img, Price, NameWrap, Name } from './styled'
+import { Wrapper, Link, ImgWrap, Img, Price, NameWrap, Name, AddButton } from './styled'
 
-const Product = ({ node }) => (
+const Product = ({ node, onAddToCart }) => (
   <Wrapper>
     <Link to={node.id}>
       <ImgWrap>
@@ -15,6 +15,9 @@ const Product = ({ node }) => (
         <Name>{node.attributes.name}</Name>
       </NameWrap>
       <Price>{node.attributes.price}</Price>
+      <AddButton onClick={evt => onAddToCart(node.id, evt)}>
+        Add to cart
+      </AddButton>
     </Link>
   </Wrapper>
 )

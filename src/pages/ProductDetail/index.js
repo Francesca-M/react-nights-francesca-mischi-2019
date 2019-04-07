@@ -15,8 +15,8 @@ class ProductDetail extends Component {
   async componentDidMount() {
     const currentProduct = await getProductDetail(this.state.productId)
     this.setState(prevState => ({
-      currentProduct,
       ...prevState.currentProduct,
+      currentProduct,
       isLoading: false,
     }))
   }
