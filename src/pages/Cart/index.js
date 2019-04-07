@@ -21,11 +21,11 @@ class CartView extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   items: Object.keys(state.cartItems).map(productId => ({
     product: state.products.data.find(p => p.id === productId),
-    quantity: state.cartItems[productId]
-  }))
+    quantity: state.cartItems[productId],
+  })),
 })
 
 const Cart = connect(mapStateToProps)(CartView)

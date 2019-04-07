@@ -4,15 +4,15 @@ import { Link as Baselink } from 'react-router-dom'
 import theme from '../../../../global/theme'
 
 export const Wrapper = styled.li`
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.12);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   background-color: white;
   color: ${theme.color.black};
   padding: 1rem;
   margin: 1rem;
   width: 300px;
   &:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.13), 0 10px 10px rgba(0,0,0,0.10);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.13), 0 10px 10px rgba(0, 0, 0, 0.1);
   }
 `
 
@@ -57,6 +57,4 @@ export const AddButton = styled.button`
   }
   display: block;
   margin: 10px auto 0;
-
 `
-

@@ -22,7 +22,7 @@ class Products extends Component {
 
     this.setState({
       isLoading: false,
-    });
+    })
   }
 
   handleAddToCart = (productId, evt) => {
@@ -38,7 +38,11 @@ class Products extends Component {
         {this.props.items && (
           <ProductsWrapper>
             {this.props.items.map(product => (
-              <Product key={product.id} node={product} onAddToCart={this.handleAddToCart} />
+              <Product
+                key={product.id}
+                node={product}
+                onAddToCart={this.handleAddToCart}
+              />
             ))}
           </ProductsWrapper>
         )}
@@ -47,7 +51,7 @@ class Products extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   items: state.products.data,
 })
 
@@ -56,6 +60,9 @@ const actionCreators = {
   addProduct,
 }
 
-const ProductList = connect(mapStateToProps, actionCreators)(Products)
+const ProductList = connect(
+  mapStateToProps,
+  actionCreators
+)(Products)
 
 export { ProductList }

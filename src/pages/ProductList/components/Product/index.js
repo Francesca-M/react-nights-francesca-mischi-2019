@@ -1,6 +1,15 @@
 import React from 'react'
 
-import { Wrapper, Link, ImgWrap, Img, Price, NameWrap, Name, AddButton } from './styled'
+import {
+  Wrapper,
+  Link,
+  ImgWrap,
+  Img,
+  Price,
+  NameWrap,
+  Name,
+  AddButton,
+} from './styled'
 
 const Product = ({ node, onAddToCart }) => (
   <Wrapper>

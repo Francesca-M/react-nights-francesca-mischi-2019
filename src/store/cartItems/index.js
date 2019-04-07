@@ -5,7 +5,7 @@ const reducer = (state = [], action) => {
     case ADD_PRODUCT:
       return {
         ...state,
-        [action.payload]: (state[action.payload] || 0) + 1
+        [action.payload]: (state[action.payload] || 0) + 1,
       }
     default:
       return state
