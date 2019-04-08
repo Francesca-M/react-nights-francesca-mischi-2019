@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
+    line-height: 1.6;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
     background-color: ${theme.color.softGray};
