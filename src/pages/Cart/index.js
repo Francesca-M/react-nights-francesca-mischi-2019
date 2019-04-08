@@ -3,8 +3,16 @@ import { connect } from 'react-redux'
 
 import Layout from '../../components/Layout'
 import MainTitle from '../../components/MainTitle'
+import BasicButton from '../../components/BasicButton'
+
+import { clearCart } from '../../store/cartItems/actions'
 
 class CartView extends Component {
+  handleClearCart = (items, evt) => {
+    evt.preventDefault()
+    this.props.clearCart(items)
+  }
+
   render() {
     return (
       <Layout>
@@ -16,6 +24,11 @@ class CartView extends Component {
             </li>
           ))}
         </ul>
+        <BasicButton
+          onClick={evt => this.handleClearCart(this.props.items, evt)}
+        >
+          Clear cart
+        </BasicButton>
       </Layout>
     )
   }
@@ -28,6 +41,13 @@ const mapStateToProps = state => ({
   })),
 })
 
-const Cart = connect(mapStateToProps)(CartView)
+const actionCreators = {
+  clearCart,
+}
+
+const Cart = connect(
+  mapStateToProps,
+  actionCreators
+)(CartView)
 
 export { Cart }
