@@ -26,5 +26,6 @@ module.exports = {
     'react/no-did-mount-set-state': 1,
     'react/prefer-stateless-function': 0,
     'react/no-render-return-value': 1,
+    'react/prop-types': 0
   },
 }

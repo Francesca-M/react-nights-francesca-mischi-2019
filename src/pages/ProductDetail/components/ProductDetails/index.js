@@ -10,16 +10,13 @@ import {
   AddButton,
   Code,
   Description,
-  TextWrap
+  TextWrap,
 } from './styled'
 
 const ProductDetails = ({ node, onAddToCart }) => (
   <Wrapper>
     <ImgWrap>
-      <Img
-        src={node.attributes.image_url}
-        alt={node.attributes.description}
-      />
+      <Img src={node.attributes.image_url} alt={node.attributes.description} />
     </ImgWrap>
     <TextWrap>
       <NameWrap>

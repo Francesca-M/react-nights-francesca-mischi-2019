@@ -46,5 +46,4 @@ export const Name = styled.h3`
   text-transform: uppercase;
 `
 
-export const AddButton = styled(BasicButton)`
-`
+export const AddButton = styled(BasicButton)``

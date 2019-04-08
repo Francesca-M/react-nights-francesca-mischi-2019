@@ -18,7 +18,9 @@ class Details extends Component {
   }
 
   async componentDidMount() {
-    const currentProduct = await getProductDetail(this.props.match.params.productId)
+    const currentProduct = await getProductDetail(
+      this.props.match.params.productId
+    )
 
     this.props.loadDetails(currentProduct)
 
@@ -42,8 +44,7 @@ class Details extends Component {
             <ProductDetails
               node={this.props.productDetails}
               onAddToCart={this.handleAddToCart}
-            >
-            </ProductDetails>
+            />
           )}
         </DetailsWrapper>
       </Layout>
@@ -72,6 +73,5 @@ const ProductDetail = connect(
   mapStateToProps,
   actionCreators
 )(Details)
-
 
 export { ProductDetail }

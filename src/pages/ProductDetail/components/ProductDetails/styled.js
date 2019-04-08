@@ -35,8 +35,7 @@ export const Price = styled.span`
   color: ${theme.color.black};
 `
 
-export const NameWrap = styled.div`
-`
+export const NameWrap = styled.div``
 
 export const Name = styled.h3`
   color: ${theme.color.black};
@@ -45,12 +44,9 @@ export const Name = styled.h3`
 `
 
 export const Code = styled.p`
-  font-size: ${theme.fontSize.normal}
+  font-size: ${theme.fontSize.normal};
 `
 
-export const AddButton = styled(BasicButton)`
+export const AddButton = styled(BasicButton)``
 
-`
-
-export const Description = styled.p`
-`
+export const Description = styled.p``
