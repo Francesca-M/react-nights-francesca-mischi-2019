@@ -1,9 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const render = () => ReactDOM.render(<App />, document.getElementById('root'))
+import * as serviceWorker from './serviceWorker'
+import GlobalStyles from './GlobalStyles'
+import App from './App'
+
+const render = () =>
+  ReactDOM.render(
+    <Router>
+      <GlobalStyles />
+      <App />
+    </Router>,
+    document.getElementById('root')
+  )
 
 if (module.hot) {
   module.hot.accept('./App.js', render)
