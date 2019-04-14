@@ -20,6 +20,7 @@ class Layout extends Component {
         <Header>
           <StyledLink to="/">All Products</StyledLink>
           <StyledLink to="/cart">My Cart</StyledLink>
+          <StyledLink to="/signup">Sign up</StyledLink>
         </Header>
         <Wrapper>{this.props.children}</Wrapper>
       </div>
