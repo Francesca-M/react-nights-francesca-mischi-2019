@@ -16,11 +16,11 @@ class CartView extends Component {
   render() {
     return (
       <Layout>
-        <MainTitle>My Cart</MainTitle>
+        <MainTitle textAlign="center">My Cart</MainTitle>
         <ul>
           {this.props.items.map(item => (
             <li key={item.product.id}>
-              {item.product.attributes.name} - {item.quantity}
+              {item.product.name} - {item.quantity}
             </li>
           ))}
         </ul>
@@ -36,7 +36,7 @@ class CartView extends Component {
 
 const mapStateToProps = state => ({
   items: Object.keys(state.cartItems).map(productId => ({
-    product: state.products.data.find(p => p.id === productId),
+    product: state.products.find(p => p.id === productId),
     quantity: state.cartItems[productId],
   })),
 })

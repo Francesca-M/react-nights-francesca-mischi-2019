@@ -6,7 +6,7 @@ import MainTitle from '../../components/MainTitle'
 import Product from './components/Product'
 
 import { ProductsWrapper } from './styled'
-import { getProducts } from '../../api/get-products'
+import { getProducts } from '../../api/products/get-products'
 import { loadProducts } from '../../store/products/actions'
 import { addProduct } from '../../store/cartItems/actions'
 
@@ -52,7 +52,7 @@ class Products extends Component {
 }
 
 const mapStateToProps = state => ({
-  items: state.products.data,
+  items: state.products,
 })
 
 const actionCreators = {

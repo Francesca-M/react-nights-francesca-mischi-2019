@@ -4,7 +4,7 @@ import {
   Wrapper,
   ImgWrap,
   Img,
-  Price,
+  // Price,
   NameWrap,
   Name,
   AddButton,
@@ -16,22 +16,20 @@ import {
 const ProductDetails = ({ node, onAddToCart }) => (
   <Wrapper>
     <ImgWrap>
-      <Img src={node.attributes.image_url} alt={node.attributes.description} />
+      <Img src={node.image_url} alt={node.description} />
     </ImgWrap>
     <TextWrap>
       <NameWrap>
-        <Code>{node.attributes.code}</Code>
-        <Name>{node.attributes.name}</Name>
+        <Code>{node.code}</Code>
+        <Name>{node.name}</Name>
       </NameWrap>
-      <Price>{node.attributes.price}</Price>
-      <Description>{node.attributes.description}</Description>
+      {/* <Price>{node.price.formatted_amount}</Price> */}
+      <Description>{node.description}</Description>
       <AddButton onClick={evt => onAddToCart(node.id, evt)}>
         Add to cart
       </AddButton>
     </TextWrap>
   </Wrapper>
 )
-
-//TODO: add props validation for node
 
 export default ProductDetails

@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Layout from '../../components/Layout'
 import MainTitle from '../../components/MainTitle'
 
 import { DetailsWrapper } from './styled'
-import { getProductDetail } from '../../api/get-product-detail'
+import { getProductDetail } from '../../api/products/get-product-detail'
 import ProductDetails from './components/ProductDetails'
 
 import { loadDetails } from '../../store/productDetails/actions'
@@ -40,7 +39,7 @@ class Details extends Component {
         <MainTitle textAlign="center">Product details</MainTitle>
         <DetailsWrapper>
           {this.state.isLoading && '...'}
-          {this.props.productDetails.attributes && (
+          {this.props.productDetails && (
             <ProductDetails
               node={this.props.productDetails}
               onAddToCart={this.handleAddToCart}
@@ -50,14 +49,6 @@ class Details extends Component {
       </Layout>
     )
   }
-}
-
-Details.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      productId: PropTypes.string,
-    }),
-  }).isRequired,
 }
 
 const mapStateToProps = state => ({

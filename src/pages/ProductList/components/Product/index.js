@@ -15,15 +15,12 @@ const Product = ({ node, onAddToCart }) => (
   <Wrapper>
     <Link to={node.id}>
       <ImgWrap>
-        <Img
-          src={node.attributes.image_url}
-          alt={`${node.attributes.name} image`}
-        />
+        <Img src={node.image_url} alt={`${node.name} image`} />
       </ImgWrap>
       <NameWrap>
-        <Name>{node.attributes.name}</Name>
+        <Name>{node.name}</Name>
       </NameWrap>
-      <Price>{node.attributes.price}</Price>
+      <Price>{node.price.formatted_amount}</Price>
       <AddButton onClick={evt => onAddToCart(node.id, evt)}>
         Add to cart
       </AddButton>

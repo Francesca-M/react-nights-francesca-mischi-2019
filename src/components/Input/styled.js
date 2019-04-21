@@ -9,9 +9,7 @@ export const Wrapper = styled.div`
 `
 
 export const StyledInput = styled.input`
-  border:
-    2px
-    solid
+  border: 2px solid
     ${({ hasError }) => (hasError ? theme.color.red : theme.color.gray)};
   border-radius: ${theme.radius.basic};
   font-size: ${theme.fontSize.medium};

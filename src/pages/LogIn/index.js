@@ -7,26 +7,28 @@ import MainTitle from '../../components/MainTitle'
 import { Form, GlobalFormError } from '../../components/Form'
 import Input from '../../components/Input'
 import BasicButton from '../../components/BasicButton'
-import { schema } from './schema'
 import * as customerActions from '../../store/customer/actions'
-import { createCustomer } from '../../api/customers/create-customer'
+import { getCustomerToken } from '../../api/customers/get-customer-token'
 import { getCustomer } from '../../api/customers/get-customer'
+import { schema } from './schema'
 
-class SignUpPage extends Component {
+class LogInPage extends Component {
   state = {
     globalError: '',
   }
+
   initialValues = {
-    firstName: '',
     email: '',
     password: '',
-    passwordConfirm: '',
   }
 
-  handleSubmit = async (values, { setSubmitting }) => {
+  handleSubmit = async ({ email, password }, { setSubmitting }) => {
     try {
       setSubmitting(true)
-      const { ownerId } = await createCustomer(values)
+      const { ownerId } = await getCustomerToken({
+        username: email,
+        password,
+      })
       const customer = await getCustomer(ownerId)
       this.props.login(customer)
       this.props.history.push('/account')
@@ -43,7 +45,7 @@ class SignUpPage extends Component {
 
     return (
       <Layout>
-        <MainTitle textAlign="center">Sign Up</MainTitle>
+        <MainTitle textAlign="center">Log In</MainTitle>
         <Formik
           initialValues={this.initialValues}
           validationSchema={schema}
@@ -54,16 +56,10 @@ class SignUpPage extends Component {
               {Boolean(globalError) && (
                 <GlobalFormError>{globalError}</GlobalFormError>
               )}
-              <Input name="firstName" label="First name" />
               <Input name="email" type="email" label="Email address" />
               <Input name="password" type="password" label="Password" />
-              <Input
-                name="passwordConfirm"
-                type="password"
-                label="Confirm password"
-              />
               <BasicButton disabled={isSubmitting}>
-                {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+                {isSubmitting ? 'Logging In...' : 'Log In'}
               </BasicButton>
             </Form>
           )}
@@ -77,7 +73,7 @@ const mapDispatchToProps = {
   login: customerActions.login,
 }
 
-export const SignUp = connect(
+export const LogIn = connect(
   null,
   mapDispatchToProps
-)(SignUpPage)
+)(LogInPage)
