@@ -15,22 +15,22 @@ const Product = ({ node, onAddToCart }) => (
   <Wrapper>
     <Link to={node.id}>
       <ImgWrap>
-        <Img
-          src={node.attributes.image_url}
-          alt={`${node.attributes.name} image`}
-        />
+        <Img src={node.image_url} alt={`${node.name} image`} />
       </ImgWrap>
       <NameWrap>
-        <Name>{node.attributes.name}</Name>
+        <Name>{node.name}</Name>
       </NameWrap>
-      <Price>{node.attributes.price}</Price>
-      <AddButton onClick={evt => onAddToCart(node.id, evt)}>
+      <Price>{node.price.formatted_amount}</Price>
+      <AddButton
+        onClick={event => {
+          event.preventDefault()
+          onAddToCart(node.id)
+        }}
+      >
         Add to cart
       </AddButton>
     </Link>
   </Wrapper>
 )
-
-//TODO: add props validation for node
 
 export default Product

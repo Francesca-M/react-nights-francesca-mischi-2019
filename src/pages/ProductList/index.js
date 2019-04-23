@@ -1,68 +1,63 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import qs from 'qs'
 
 import Layout from '../../components/Layout'
 import MainTitle from '../../components/MainTitle'
 import Product from './components/Product'
+import Pagination from '../../components/Pagination'
+import Loader from '../../components/Loader'
+
+import { getProducts } from '../../api/products/get-products'
+import useApi from '../../api/use-api'
 
 import { ProductsWrapper } from './styled'
-import { getProducts } from '../../api/get-products'
-import { loadProducts } from '../../store/products/actions'
-import { addProduct } from '../../store/cartItems/actions'
+import * as cartActions from '../../store/cartItems/actions'
 
-class Products extends Component {
-  state = {
-    isLoading: true,
+const Products = ({ match, location, addProduct }) => {
+  const { page } = qs.parse(location.search.substr(1))
+
+  const { data: res, isLoading } = useApi(
+    () => getProducts({ page: { number: page } }),
+    [page]
+  )
+
+  const handleAddToCart = productId => {
+    addProduct(productId)
   }
 
-  async componentDidMount() {
-    const products = await getProducts()
-
-    this.props.loadProducts(products)
-
-    this.setState({
-      isLoading: false,
-    })
-  }
-
-  handleAddToCart = (productId, evt) => {
-    evt.preventDefault()
-    this.props.addProduct(productId)
-  }
-
-  render() {
-    return (
-      <Layout>
-        <MainTitle textAlign="center">New catalog</MainTitle>
-        {this.state.isLoading && '...'}
-        {this.props.items && (
+  return (
+    <Layout>
+      <MainTitle textAlign="center">New catalog</MainTitle>
+      {isLoading && <Loader />}
+      {res && (
+        <>
+          <Pagination
+            pages={res.meta.page_count}
+            activePage={match.params.page}
+          />
           <ProductsWrapper>
-            {this.props.items.map(product => (
+            {res.data.map(product => (
               <Product
                 key={product.id}
                 node={product}
-                onAddToCart={this.handleAddToCart}
+                onAddToCart={handleAddToCart}
               />
             ))}
           </ProductsWrapper>
-        )}
-      </Layout>
-    )
-  }
+        </>
+      )}
+    </Layout>
+  )
 }
 
-const mapStateToProps = state => ({
-  items: state.products.data,
-})
-
-const actionCreators = {
-  loadProducts,
-  addProduct,
+const mapDispatchToProps = {
+  addProduct: cartActions.addProduct,
 }
 
 const ProductList = connect(
-  mapStateToProps,
-  actionCreators
+  null,
+  mapDispatchToProps
 )(Products)
 
 export { ProductList }

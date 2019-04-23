@@ -14,6 +14,7 @@ export const Wrapper = styled.li`
   width: 300px;
   &:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.13), 0 10px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
   }
 `
 

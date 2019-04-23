@@ -1,5 +1,4 @@
-import { ADD_PRODUCT } from './actions'
-import { CLEAR_CART } from './actions'
+import { ADD_PRODUCT, CLEAR_CART, REMOVE_PRODUCT } from './actions'
 
 const reducer = (state = [], action) => {
   switch (action.type) {
@@ -11,6 +10,11 @@ const reducer = (state = [], action) => {
     case CLEAR_CART:
       state = []
       return state
+    case REMOVE_PRODUCT: {
+      const nextState = Object.assign({}, state)
+      delete nextState[action.payload]
+      return nextState
+    }
     default:
       return state
   }
