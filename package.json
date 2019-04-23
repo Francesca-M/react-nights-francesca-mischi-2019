@@ -31,9 +31,12 @@
     ]
   },
   "dependencies": {
+    "eslint-plugin-react-hooks": "^1.6.0",
     "formik": "^1.5.2",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
+    "qs": "^6.7.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-redux": "^6.0.1",

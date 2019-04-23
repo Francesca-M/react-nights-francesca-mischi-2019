@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import MainTitle from '../../components/MainTitle'
 
 import { DetailsWrapper } from './styled'
-import { getProductDetail } from '../../api/products/get-product-detail'
+import getProductDetail from '../../api/products/get-product-detail'
 import ProductDetails from './components/ProductDetails'
 
 import { loadDetails } from '../../store/productDetails/actions'
@@ -28,8 +28,7 @@ class Details extends Component {
     })
   }
 
-  handleAddToCart = (productId, evt) => {
-    evt.preventDefault()
+  handleAddToCart = productId => {
     this.props.addProduct(productId)
   }
 

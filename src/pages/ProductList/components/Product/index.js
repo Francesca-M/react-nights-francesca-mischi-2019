@@ -21,13 +21,16 @@ const Product = ({ node, onAddToCart }) => (
         <Name>{node.name}</Name>
       </NameWrap>
       <Price>{node.price.formatted_amount}</Price>
-      <AddButton onClick={evt => onAddToCart(node.id, evt)}>
+      <AddButton
+        onClick={event => {
+          event.preventDefault()
+          onAddToCart(node.id)
+        }}
+      >
         Add to cart
       </AddButton>
     </Link>
   </Wrapper>
 )
-
-//TODO: add props validation for node
 
 export default Product
