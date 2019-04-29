@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { Link as Baselink } from 'react-router-dom'
 
-import theme from '../../../../global/theme'
-import BasicButton from '../../../../components/BasicButton'
+import theme from '../../../global/theme'
+import BasicButton from '../../../components/BasicButton'
 
 export const Wrapper = styled.li`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
