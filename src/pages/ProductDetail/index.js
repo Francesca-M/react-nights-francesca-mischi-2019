@@ -1,67 +1,75 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import Layout from '../../components/Layout'
+import Loader from '../../components/Loader'
 import MainTitle from '../../components/MainTitle'
 
-import { DetailsWrapper } from './styled'
 import getProductDetail from '../../api/products/get-product-detail'
-import ProductDetails from './components/ProductDetails'
+import useApi from '../../api/use-api'
 
-import { loadDetails } from '../../store/productDetails/actions'
-import { addProduct } from '../../store/cartItems/actions'
+import * as cartActions from '../../store/cartItems/actions'
 
-class Details extends Component {
-  state = {
-    isLoading: true,
-  }
+import {
+  Wrapper,
+  ImgWrap,
+  Img,
+  // Price,
+  NameWrap,
+  Name,
+  AddButton,
+  Code,
+  Description,
+  TextWrap,
+  DetailsWrapper,
+} from './styled'
 
-  async componentDidMount() {
-    const currentProduct = await getProductDetail(
-      this.props.match.params.productId
-    )
+const ProductView = ({ match, addProduct }) => {
+  const { productId } = match.params
 
-    this.props.loadDetails(currentProduct)
+  const { data: productDetails, isLoading } = useApi(
+    () => getProductDetail(productId),
+    [productId]
+  )
 
-    this.setState({
-      isLoading: false,
-    })
-  }
-
-  handleAddToCart = productId => {
-    this.props.addProduct(productId)
-  }
-
-  render() {
-    return (
-      <Layout>
-        <MainTitle textAlign="center">Product details</MainTitle>
-        <DetailsWrapper>
-          {this.state.isLoading && '...'}
-          {this.props.productDetails && (
-            <ProductDetails
-              node={this.props.productDetails}
-              onAddToCart={this.handleAddToCart}
-            />
-          )}
-        </DetailsWrapper>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <MainTitle textAlign="center">Product details</MainTitle>
+      <DetailsWrapper>
+        {isLoading && <Loader />}
+        {productDetails && (
+          <Wrapper>
+            <ImgWrap>
+              <Img
+                src={productDetails.image_url}
+                alt={productDetails.description}
+              />
+            </ImgWrap>
+            <TextWrap>
+              <NameWrap>
+                <Code>{productDetails.code}</Code>
+                <Name>{productDetails.name}</Name>
+              </NameWrap>
+              {/* <Price>{productDetails.price.formatted_amount}</Price> */}
+              <Description>{productDetails.description}</Description>
+              <AddButton onClick={evt => addProduct(productDetails.id, evt)}>
+                Add to cart
+              </AddButton>
+            </TextWrap>
+          </Wrapper>
+        )}
+      </DetailsWrapper>
+    </Layout>
+  )
 }
 
-const mapStateToProps = state => ({
-  productDetails: state.productDetails,
-})
-
-const actionCreators = {
-  loadDetails,
-  addProduct,
+const mapDispatchToProps = {
+  addProduct: cartActions.addProduct,
 }
 
 const ProductDetail = connect(
-  mapStateToProps,
-  actionCreators
-)(Details)
+  null,
+  mapDispatchToProps
+)(ProductView)
 
 export { ProductDetail }

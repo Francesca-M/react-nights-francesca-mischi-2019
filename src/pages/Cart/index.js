@@ -6,6 +6,7 @@ import MainTitle from '../../components/MainTitle'
 import CartItem from './CartItem'
 
 import * as cartActions from '../../store/cartItems/actions'
+import * as cartSelectors from '../../store/cartItems/selectors'
 
 const CartView = ({ items, removeProduct }) => {
   return (
@@ -26,10 +27,7 @@ const CartView = ({ items, removeProduct }) => {
 }
 
 const mapStateToProps = state => ({
-  items: Object.keys(state.cartItems).map(productId => ({
-    product: { id: productId },
-    quantity: state.cartItems[productId],
-  })),
+  items: cartSelectors.getCartItems(state),
 })
 
 const mapDispatchToProps = {
